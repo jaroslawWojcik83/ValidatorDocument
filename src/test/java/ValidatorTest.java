@@ -1,9 +1,13 @@
+import junitparams.JUnitParamsRunner;
 import org.junit.Before;
 import org.junit.Test;
 import junitparams.Parameters;
+import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 import static org.assertj.core.api.Assertions.*;
+
+@RunWith(JUnitParamsRunner.class)
 
 public class ValidatorTest {
 
@@ -41,8 +45,9 @@ public class ValidatorTest {
 
     @Test
     @Parameters({"akw555665", "AKW555A65", "Akw555t65", "Ak1555665"})
-    public void validateIdDokumentStructureFals(String input) {
-        assertFalse(validator.validate(input));
+    public void validateIdDokumentStructureFalse(String input) {
+        Validator validator2 = new Validator();
+        assertFalse(validator2.validate(input));
     }
 
     @Test
@@ -56,6 +61,15 @@ public class ValidatorTest {
         assertThat(validator.validate(idDok)).isFalse();
     }
 
+    @Test
+    public void validateIdDokumentIsEmptyFalse() {
+        String idDok = "";
+        assertThat(validator.validate(idDok)).isFalse();
+    }
 
+    @Test
+    public void validateIdDokumentIsNulFalse() {
+        assertThat(validator.validate(null)).isFalse();
+    }
 
 }
