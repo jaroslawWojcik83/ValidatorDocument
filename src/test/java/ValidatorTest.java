@@ -19,56 +19,57 @@ public class ValidatorTest {
     }
 
     @Test
-    public void validateIdDokumentIsTrue1() {
+    public void validateIdDocumentIsTrue1() {
         assertTrue(validator.validate("CEV737475"));
     }
 
     @Test
-    public void validateIdDokumentIsTrue2() {
+    public void validateIdDocumentIsTrue2() {
         assertTrue(validator.validate("AKW555665"));
     }
 
     @Test
-    public void validateIdDokumentLengthTrue() {
+    public void validateIdDocumentLengthTrue() {
         assertTrue(validator.validate("AKW555665"));
     }
 
+
     @Test
-    public void validateIdDokumentLengthFalse() {
+    public void validateIdDocumentLengthFalse() {
         assertFalse(validator.validate("AKW5556"));
     }
 
     @Test
-    public void validateIdDokumentStructureTrue() {
-        assertFalse(validator.validate("AKW555665"));
+    public void validateIdDocumentStructureTrue() {
+        assertTrue(validator.validate("AKW555665"));
     }
 
     @Test
-    @Parameters({"akw555665", "AKW555A65", "Akw555t65", "Ak1555665"})
-    public void validateIdDokumentStructureFalse(String input) {
+    @Parameters({"Akw555t65", "AKW555A65", "Akw555t65", "Ak1555665"})
+    public void validateIdDocumentStructureFalse(String input) {
         Validator validator2 = new Validator();
         assertFalse(validator2.validate(input));
     }
 
     @Test
-    public void validateIdDokumentControlNumberTrue() {
+    public void validateIdDocumentControlNumberTrue() {
         assertTrue(validator.validate("AKW555665"));
     }
 
     @Test
-    public void validateIdDokumentControlNumberFalse() {
+    public void validateIdDocumentControlNumberFalse() {
         String idDok = "AKW155665";
         assertThat(validator.validate(idDok)).isFalse();
     }
 
     @Test
-    public void validateIdDokumentIsEmptyFalse() {
+    public void validateIdDocumentIsEmptyFalse() {
         String idDok = "";
         assertThat(validator.validate(idDok)).isFalse();
     }
 
     @Test
-    public void validateIdDokumentIsNulFalse() {
+    public void validateIdDocumentIsNulFalse() {
         assertThat(validator.validate(null)).isFalse();
     }
 
